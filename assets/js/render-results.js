@@ -41,21 +41,35 @@ function getSearchAndFormat(search, format){
 function renderResults(data){
     var results = data.results;
     var listResults = $("<ul>");
-
+    listResults.css({"list-style-type": "none"});
     for(var i = 0; i < results.length; i++){
+    // <div class="card" style="max-width: 320px;">
+    // <div class="card-body">
+    //     <h4 class="card-title">Example card title</h4>
+    //     <p class="card-subtitle fg-3">With a card subtitle</p>
+    //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    //     <a href="#">Card link</a>
+    // </div>
+    // </div>
         var li = $("<li>");
-        li.addClass("text-primary bg-light");
+        li.addClass("card col-md-10 text-primary bg-light");
         li.css({"padding": "0.5em", "border-radius": "0.5em", "margin-bottom": "1em"});
-        var title = $("<h2>");
+        var cardBody = $("<div>");
+        cardBody.addClass("card-body");
+        var title = $("<h3>");
+        title.addClass("card-title");
         var date = $("<p>");
         var subTitle = $("<h5>");
+        subTitle.addClass("card-subtitle fg-3");
         subTitle.text("Subject: ")
         subTitle.css({"font-weight": "bolder"});
         var subject = $("<p>");
         var descrTitle = $("<h5>");
+        descrTitle.addClass("card-text");
         descrTitle.text("Description: ");
         descrTitle.css({"font-weight": "bolder"});
         var description = $("<p>");
+        description.addClass("card-text");
         var link = $("<button>");
         link.addClass("btn btn-info");
         var url = $("<a>");
@@ -86,13 +100,14 @@ function renderResults(data){
         url.text("Read More");
         url.attr("href", results[i].url);
         link.append(url);
-        li.append(title);
-        li.append(date);
-        li.append(subTitle);
-        li.append(subject);
-        li.append(descrTitle);
-        li.append(description);
-        li.append(link);
+        cardBody.append(title);
+        cardBody.append(date);
+        cardBody.append(subTitle);
+        cardBody.append(subject);
+        cardBody.append(descrTitle);
+        cardBody.append(description);
+        cardBody.append(link);
+        li.append(cardBody);
         listResults.append(li);
     }
     resultContainer.append(listResults);
