@@ -2,6 +2,9 @@ var resultContainer = $("#result-content");
 var searchBtn = $("#search-btn");
 var term = $("#search-input");
 var filter = $("#format-input");
+var resultText = $("#result-text");
+var resultText = $("#result-text");
+
 // gets the search and format query parameter values from the url.
 var search = document.location.search.split("=")[1];
 var format = document.location.search.split("=")[3];
@@ -38,6 +41,7 @@ function getSearchAndFormat(search, format){
 function renderResults(data){
     var results = data.results;
     var listResults = $("<ul>");
+
     for(var i = 0; i < results.length; i++){
         var li = $("<li>");
         li.addClass("text-primary bg-light");
